@@ -1,0 +1,38 @@
+{
+    "name": "vscode-miniprogram-highlight",
+    "displayName": "miniprogram-highlight",
+    "description": "提供小程序wxml和wxss的语法高亮",
+    "version": "0.0.1",
+    "publisher": "IronLu233",
+    "engines": {
+        "vscode": "^1.27.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "wxml",
+                "aliases": [
+                    "小程序WXML",
+                    "wxml"
+                ],
+                "extensions": [
+                    ".wxml"
+                ],
+                "configuration": "./syntaxes/wxml.language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "wxml",
+                "scopeName": "source.wxml",
+                "path": "./syntaxes/wxml.tmLanguage.json",
+                "embeddedLanguages": {
+                    "text.html": "html"
+                }
+            }
+        ]
+    }
+}
