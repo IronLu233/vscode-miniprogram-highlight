@@ -11,19 +11,22 @@
 		},
 		{
 			"include": "#tags-invalid"
+		},
+		{
+			"include": "#expression"
 		}
 	],
 	"repository": {
 		"attribute": {
 			"patterns": [
 				{
-					"begin": "(s(hape|cope|t(ep|art)|ize(s)?|p(ellcheck|an)|elected|lot|andbox|rc(set|doc|lang)?)|h(ttp-equiv|i(dden|gh)|e(ight|aders)|ref(lang)?)|n(o(nce|validate|module)|ame)|c(h(ecked|arset)|ite|o(nt(ent(editable)?|rols)|ords|l(s(pan)?|or))|lass|rossorigin)|t(ype(mustmatch)?|itle|a(rget|bindex)|ranslate)|i(s(map)?|n(tegrity|putmode)|tem(scope|type|id|prop|ref)|d)|op(timum|en)|d(i(sabled|r(name)?)|ownload|e(coding|f(er|ault))|at(etime|a)|raggable)|usemap|p(ing|oster|la(ysinline|ceholder)|attern|reload)|enctype|value|kind|for(m(novalidate|target|enctype|action|method)?)?|w(idth|rap)|l(ist|o(op|w)|a(ng|bel))|a(s(ync)?|c(ce(sskey|pt(-charset)?)|tion)|uto(c(omplete|apitalize)|play|focus)|l(t|low(usermedia|paymentrequest|fullscreen))|bbr)|r(ows(pan)?|e(versed|quired|ferrerpolicy|l|adonly))|m(in(length)?|u(ted|ltiple)|e(thod|dia)|a(nifest|x(length)?)))(?![\\w:-])",
+					"begin": "active|active-mode|activeColor|adjust-position|animation|app-id|app-parameter|args|aspect|author|auto-focus|auto-height|autoplay|autopush|background-mute|backgroundColor|beauty|block-color|block-size|canvas-id|checked|circles|circular|class|color|confirm-hold|confirm-type|controls|covers|current|current-item-id|cursor|cursor-spacing|damping|danmu-btn|danmu-list|decode|delta|device-position|direction|disable-scroll|disabled|display-multiple-items|duration|enable-3D|enable-back-to-top|enable-camera|enable-danmu|enable-overlooking|enable-progress-gesture|enable-rotate|enable-scroll|enable-zoom|extra-data|fixed|flash|focus|for|form-type|friction|hover-class|hover-start-time|hover-stay-time|hover-stop-propagation|id|include-points|indicator-active-color|indicator-class|indicator-color|indicator-dots|inertia|initial-time|interval|lang|latitude|lazy-load|loading|longitude|loop|lower-threshold|markers|mask-class|max|max-bitrate|max-cache|maxlength|min|min-bitrate|min-cache|mode|muted|name|next-margin|nodes|object-fit|objectFit|open-gid|open-type|orientation|out-of-bounds|page-gesture|password|path|percent|placeholder|placeholder-class|plain|polygons|polyline|poster|previous-margin|range|range-key|report-submit|scale|scale-area|scale-max|scale-min|scale-value|scroll-into-view|scroll-left|scroll-top|scroll-with-animation|scroll-x|scroll-y|selectable|selected-color|selection-end|selection-start|send-message-img|send-message-path|send-message-title|session-from|show-center-play-btn|show-compass|show-confirm-bar|show-fullscreen-btn|show-info|show-location|show-message-card|show-play-btn|show-progress|show-value|size|skip-hidden-item-layout|space|src|step|stroke-width|subkey|target|type|unit-id|upper-threshold|url|value|version|vertical|waiting-image|waiting-image-hash|whiteness|x|y|zoom",
 					"beginCaptures": {
 						"0": {
 							"name": "entity.other.attribute-name.html"
 						}
 					},
-					"comment": "HTML5 attributes, not event handlers",
+					"comment": "小程序属性，不包括事件处理Handler",
 					"end": "(?=\\s*+[^=\\s])",
 					"name": "meta.attribute.$1.html",
 					"patterns": [
@@ -33,13 +36,13 @@
 					]
 				},
 				{
-					"begin": "style(?![\\w:-])",
+					"begin": "(?:(?:(?:indicator)|(?:mask)|(?:placeholder))-)?style(?![\\w:-])",
 					"beginCaptures": {
 						"0": {
 							"name": "entity.other.attribute-name.html"
 						}
 					},
-					"comment": "HTML5 style attribute",
+					"comment": "小程序style属性",
 					"end": "(?=\\s*+[^=\\s])",
 					"name": "meta.attribute.style.html",
 					"patterns": [
@@ -125,13 +128,13 @@
 					]
 				},
 				{
-					"begin": "on(s(croll|t(orage|alled)|u(spend|bmit)|e(curitypolicyviolation|ek(ing|ed)|lect))|hashchange|c(hange|o(ntextmenu|py)|u(t|echange)|l(ick|ose)|an(cel|play(through)?))|t(imeupdate|oggle)|in(put|valid)|o(nline|ffline)|d(urationchange|r(op|ag(start|over|e(n(ter|d)|xit)|leave)?)|blclick)|un(handledrejection|load)|p(opstate|lay(ing)?|a(ste|use|ge(show|hide))|rogress)|e(nded|rror|mptied)|volumechange|key(down|up|press)|focus|w(heel|aiting)|l(oad(start|e(nd|d(data|metadata)))?|anguagechange)|a(uxclick|fterprint|bort)|r(e(s(ize|et)|jectionhandled)|atechange)|m(ouse(o(ut|ver)|down|up|enter|leave|move)|essage(error)?)|b(efore(unload|print)|lur))(?![\\w:-])",
+					"begin": "bind(animationend|animationfinish|animationiteration|animationstart|blur|callouttap|cancel|change|changing|complete|confirm|contact|controltap|ended|error|fail|focus|fullscreenchange|getphonenumber|getuserinfo|input|linechange|load|longpress|longtap|markertap|message|netstatus|opensetting|pause|play|poitap|regionchange|reset|scale|scancode|scroll|scrolltolower|scrolltoupper|statechange|stop|submit|success|tap|timeupdate|touchcancel|touchend|touchforcechange|touchmove|touchstart|transitionend|updated|waiting)",
 					"beginCaptures": {
 						"0": {
 							"name": "entity.other.attribute-name.html"
 						}
 					},
-					"comment": "HTML5 attributes, event handlers",
+					"comment": "小程序event handlers",
 					"end": "(?=\\s*+[^=\\s])",
 					"name": "meta.attribute.event-handler.$1.html",
 					"patterns": [
@@ -251,22 +254,6 @@
 					"comment": "HTML5 attributes, data-*",
 					"end": "(?=\\s*+[^=\\s])",
 					"name": "meta.attribute.data-x.$1.html",
-					"patterns": [
-						{
-							"include": "#attribute-interior"
-						}
-					]
-				},
-				{
-					"begin": "(align|bgcolor|border)(?![\\w:-])",
-					"beginCaptures": {
-						"0": {
-							"name": "invalid.deprecated.entity.other.attribute-name.html"
-						}
-					},
-					"comment": "HTML attributes, deprecated",
-					"end": "(?=\\s*+[^=\\s])",
-					"name": "meta.attribute.$1.html",
 					"patterns": [
 						{
 							"include": "#attribute-interior"
@@ -430,7 +417,7 @@
 					]
 				},
 				{
-					"begin": "(?i)(<)(view|scroll-view|swiper|swiper-item|movable-area|cover-view|rich-text|progress|button|checkbox-group|form|input|picker|picker-view|radio-group|textarea|navigator|functional-page-navigator)(?=\\s|/?>)",
+					"begin": "(?i)(<)(view|scroll-view|swiper|swiper-item|movable-area|cover-view|cover-image|rich-text|progress|button|checkbox-group|form|input|picker|picker-view|radio-group|textarea|navigator|functional-page-navigator)(?=\\s|/?>)",
 					"beginCaptures": {
 						"1": {
 							"name": "punctuation.definition.tag.begin.html"
@@ -453,7 +440,7 @@
 					]
 				},
 				{
-					"begin": "(?i)(<)(page|view|scroll-view|swiper|swiper-item|movable-area|cover-view|button|checkbox-group|form|input|picker|picker-view|radio-group|navigator|functional-page-navigator)(?=\\s|/?>)",
+					"begin": "(?i)(<)(page|view|scroll-view|swiper|swiper-item|movable-area|cover-view|cover-image|button|checkbox-group|form|input|picker|picker-view|radio-group|navigator|functional-page-navigator)(?=\\s|/?>)",
 					"beginCaptures": {
 						"1": {
 							"name": "punctuation.definition.tag.begin.html"
@@ -476,7 +463,7 @@
 					]
 				},
 				{
-					"begin": "(?i)(</)(page|view|scroll-view|swiper|swiper-item|movable-area|cover-view|button|checkbox-group|form|input|picker|picker-view|radio-group|navigator|functional-page-navigator)(?=\\s|/?>)",
+					"begin": "(?i)(</)(page|view|scroll-view|swiper|swiper-item|movable-area|cover-view|cover-image|button|checkbox-group|form|input|picker|picker-view|radio-group|navigator|functional-page-navigator)(?=\\s|/?>)",
 					"beginCaptures": {
 						"1": {
 							"name": "punctuation.definition.tag.begin.html"
@@ -709,6 +696,19 @@
 					"patterns": [
 						{
 							"include": "#attribute"
+						}
+					]
+				}
+			]
+		},
+		"expression": {
+			"patterns": [
+				{
+					"begin": "{{",
+					"end": "}}",
+					"patterns": [
+						{
+							"include": "source.js#expressionWithoutIdentifiers"
 						}
 					]
 				}
