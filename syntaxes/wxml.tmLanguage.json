@@ -708,9 +708,80 @@
 					"end": "}}",
 					"patterns": [
 						{
-							"include": "source.js#expressionWithoutIdentifiers"
+							"include": "#expressionWithoutIdentifiers"
+						},
+						{
+							"include": "source.js#identifiers"
+						},
+						{
+							"include": "source.js#expressionPunctuations"
 						}
 					]
+				}
+			]
+		},
+		"identifiers": {
+			"patterns": [
+				{
+					"include": "source.js#object-identifiers"
+				},
+				{
+					"match": "(?:(\\.)|(\\?\\.(?!\\s*[[:digit:]])))\\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])",
+					"captures": {
+						"1": {
+							"name": "punctuation.accessor.js"
+						},
+						"2": {
+							"name": "punctuation.accessor.optional.js"
+						},
+						"3": {
+							"name": "variable.other.constant.property.js"
+						}
+					}
+				},
+				{
+					"match": "(?:(\\.)|(\\?\\.(?!\\s*[[:digit:]])))\\s*([_$[:alpha:]][_$[:alnum:]]*)",
+					"captures": {
+						"1": {
+							"name": "punctuation.accessor.js"
+						},
+						"2": {
+							"name": "punctuation.accessor.optional.js"
+						},
+						"3": {
+							"name": "variable.other.property.js"
+						}
+					}
+				},
+				{
+					"name": "variable.other.constant.js",
+					"match": "([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])"
+				},
+				{
+					"name": "variable.other.readwrite.js",
+					"match": "[_$[:alpha:]][_$[:alnum:]]*"
+				}
+			]
+		},
+		"expressionWithoutIdentifiers": {
+			"patterns": [
+				{
+					"include": "source.js#string"
+				},
+				{
+					"include": "source.js#ternary-expression"
+				},
+				{
+					"include": "source.js#object-literal"
+				},
+				{
+					"include": "source.js#expression-operators"
+				},
+				{
+					"include": "source.js#literal"
+				},
+				{
+					"include": "source.js#paren-expression"
 				}
 			]
 		}
