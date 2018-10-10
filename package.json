@@ -22,6 +22,17 @@
                     ".wxml"
                 ],
                 "configuration": "./syntaxes/wxml.language-configuration.json"
+            },
+            {
+                "id": "wxss",
+                "aliases": [
+                    "小程序WXSS",
+                    "wxss"
+                ],
+                "extensions": [
+                    ".wxss"
+                ],
+                "configuration": "./syntaxes/wxss.language-configuration.json"
             }
         ],
         "grammars": [
@@ -32,6 +43,14 @@
                 "embeddedLanguages": {
                     "text.html": "html",
                     "source.js": "javascript"
+                }
+            },
+            {
+                "language": "wxss",
+                "scopeName": "source.wxss",
+                "path": "./syntaxes/wxss.tmLanguage.json",
+                "embeddedLanguages": {
+                    "source.css": "css"
                 }
             }
         ]
